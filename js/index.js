@@ -1,13 +1,13 @@
 const fraseSnake = "pepito_tiene_un_gato";
-const fraseCamel = "fraseEnCamelcase";
+const fraseCamel = "manolitoTieneUnPerro";
 
 console.log(snakeACamel(fraseSnake));
 console.log(camelASnake(fraseCamel));
 
-function snakeACamel() {
+function snakeACamel(string) {
 
   let nuevaFraseCamel = "";
-  const palabrasSeparadas = fraseSnake.split("_");
+  const palabrasSeparadas = string.split("_");
 
   palabrasSeparadas.forEach((element, contador) => {
     if (contador === 0) {
@@ -21,8 +21,17 @@ function snakeACamel() {
   return nuevaFraseCamel;
 }
 
-function camelASnake() {
-  return "";
+function camelASnake(string) {
+
+  return string.split('').map((character) => {
+        if (character === character.toUpperCase()) {
+            // eslint-disable-next-line prefer-template
+            return '_' + character.toLowerCase();
+        } else {
+            return character;
+        }
+    })
+    .join('');
 }
 
 function firstLetterUpperCase(palabra) {
